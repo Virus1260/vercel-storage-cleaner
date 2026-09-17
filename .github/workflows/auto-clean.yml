@@ -1,0 +1,27 @@
+name: Automatic Weekly Vercel Storage Cleanup
+
+on:
+  schedule:
+    # Runs every Sunday at 00:00 UTC (Weekly auto-purge)
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # Allows manual 1-click trigger from GitHub web UI
+
+jobs:
+  cleanup:
+    name: Purge Inactive Deployments
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Vercel Storage Cleaner
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          node clean.mjs

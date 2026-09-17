@@ -1,0 +1,25 @@
+{
+  "name": "vercel-storage-cleaner",
+  "version": "1.0.0",
+  "description": "Automated, safe cleanup tool to purge inactive historical Vercel deployments and prevent deployment storage limits.",
+  "type": "module",
+  "main": "clean.mjs",
+  "bin": {
+    "vercel-clean": "./clean.mjs"
+  },
+  "scripts": {
+    "start": "node clean.mjs",
+    "clean": "node clean.mjs",
+    "dry-run": "node clean.mjs --dry-run"
+  },
+  "keywords": [
+    "vercel",
+    "deployment",
+    "cleanup",
+    "storage",
+    "automation",
+    "hobby-plan"
+  ],
+  "author": "Virus1260",
+  "license": "MIT"
+}
